@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Instagram Replica</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  />
+
+  <!-- (選用) Bootstrap Icons 或其他 icon 套件 -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+  />
+
+  <!-- 自訂樣式 -->
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white">
+
+<!-- ===========================
+     主體頁面容器
+=========================== -->
+<div class="container-fluid min-vh-100 d-flex flex-row p-0 m-0">
+
+  <!-- ======================================
+       左側導覽列
+  ====================================== -->
+  <nav
+    class="ig-leftnav border-end bg-white d-flex flex-column align-items-start p-3"
+    style="width: 260px; min-width: 180px;"
+  >
+    <!-- Instagram 標誌區塊 -->
+    <div class="d-flex align-items-center mb-4 ps-2">
+        <h1 class="m-0" style="font-family: 'Cookie', cursive; font-size: 2rem;">Instagram</h1>
+    </div>
+
+    <!-- 主選單 (Home, Search, Explore, Reels, Inbox, Notifications, Create, Profile) -->
+    <ul class="nav flex-column w-100">
+      <li class="nav-item">
+        <a href="#" class="nav-link ig-navlink">
+          <i class="bi bi-house-door me-3 fs-4"></i>
+          首頁
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link ig-navlink">
+          <i class="bi bi-search me-3 fs-4"></i>
+          搜尋
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link ig-navlink">
+          <i class="bi bi-compass me-3 fs-4"></i>
+          探索
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link ig-navlink d-flex align-items-center">
+          <!-- 建議自行找 Reels 圖示或以影片 icon 替代 -->
+          <i class="bi bi-play-btn me-3 fs-4"></i>
+          連續短片
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link ig-navlink d-flex align-items-center">
+          <!-- 若有新訊息可加紅點 -->
+          <span class="position-relative">
+            <i class="bi bi-chat-dots me-3 fs-4"></i>
+            <!-- 紅點提示 -->
+            <span class="ig-badge">1</span>
+          </span>
+          訊息
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link ig-navlink">
+          <span class="position-relative">
+            <i class="bi bi-heart me-3 fs-4"></i>
+            <!-- 紅點提示 -->
+            <span class="ig-badge">1</span>
+          </span>
+          通知
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link ig-navlink">
+          <i class="bi bi-plus-square me-3 fs-4"></i>
+          建立
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link ig-navlink d-flex align-items-center">
+          <!-- 個人頭像可替換成真實使用者圖像 -->
+          <img
+            src="https://picsum.photos/id/1011/30/30"
+            alt="Profile"
+            class="rounded-circle me-3"
+          />
+          個人檔案
+        </a>
+      </li>
+    </ul>
+
+    <!-- Threads 與 更多 -->
+    <ul class="nav flex-column w-100 mt-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link ig-navlink d-flex align-items-center">
+          <!-- Threads 圖示，這裡先用聊天icon替代 -->
+          <span class="position-relative">
+            <i class="bi bi-chat-left-text me-3 fs-4"></i>
+            <span class="ig-badge">1</span>
+          </span>
+          Threads
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link ig-navlink">
+          <i class="bi bi-list me-3 fs-4"></i>
+          更多
+        </a>
+      </li>
+    </ul>
+
+  </nav>
+  <!-- 左側導覽列結束 -->
+
+  <!-- ===========================
+       中間主要內容
+  =========================== -->
+    <main class="flex-fill d-flex flex-column align-items-center py-3 px-0">
+
+        <!-- ===== 限時動態區 (Stories) ===== -->
+        <!-- 增加 position: relative 以及自訂 class "stories-wrapper" -->
+        <div
+        class="stories-wrapper bg-white rounded mb-3 px-2 py-2 position-relative"
+        style="width: 600px; max-width: 100%;"
+        >
+            <!-- 這是可水平滾動的容器 -->
+            <div
+            class="stories-container overflow-x-auto text-nowrap w-100"
+            style="overflow-y: hidden;"
+            id="storiesContainer"
+            >
+            <!-- Story 1 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://g.udn.com.tw/upfiles/B_7F/7f38fd3c/PSN_PHOTO/158/f_14285158_1.jpg"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 1"
+                />
+                </div>
+                <p class="small text-truncate">hey_its_kai</p>
+            </div>
+
+            <!-- Story 2 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://i.pinimg.com/474x/b8/67/ed/b867ede779145c1606f30cc6fa4c1386.jpg"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 2"
+                />
+                </div>
+                <p class="small text-truncate">seoultrip.daily</p>
+            </div>
+
+            <!-- Story 3 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://img.gogoshop.cloud/972b1b66/w84A0-dOdsZ.jpg"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 3"
+                />
+                </div>
+                <p class="small text-truncate">sandyandfilm</p>
+            </div>
+
+            <!-- Story 4 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://cdn0-digiphoto.techbang.com/system/images/112720/original/4da0d6e2082e4d1714728c10c798a6a5.jpg?1471329210"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 4"
+                />
+                </div>
+                <p class="small text-truncate">mingu_moment</p>
+            </div>
+
+            <!-- Story 5 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://memeprod.ap-south-1.linodeobjects.com/user-template/7818ccbe151d3f3b456c2cc4f6f67a5d.png"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 5"
+                />
+                </div>
+                <p class="small text-truncate">yuki.in.motion</p>
+            </div>
+
+            <!-- Story 6 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://memeprod.ap-south-1.linodeobjects.com/user-template/65d37cb62a8b3b73ca8a214460312fcc.png"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 6"
+                />
+                </div>
+                <p class="small text-truncate">lens.of.kevin</p>
+            </div>
+
+            <!-- Story 7 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://i.pinimg.com/236x/60/39/41/603941ae70ce2c92877c0b204da3dda2.jpg"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 7"
+                />
+                </div>
+                <p class="small text-truncate">vivian.draws</p>
+            </div>
+
+            <!-- Story 8 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ825m46js7ANebAQNRS3QCRm11L61KABX-Pg&s"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 8"
+                />
+                </div>
+                <p class="small text-truncate">lazyhiker_</p>
+            </div>
+
+            <!-- Story 9 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAw9hcAGOvK-QXhoWiGI8ZIF5QXJb2Pokq19KxVHWb1FCK1VMZvujwsLZ76_ezT60xEak&usqp=CAU"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 9"
+                />
+                </div>
+                <p class="small text-truncate">nana.lives</p>
+            </div>
+
+            <!-- Story 10 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://img.ltn.com.tw/Upload/ent/page/800/2024/05/24/phpcNQ2fX.jpg"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 10"
+                />
+                </div>
+                <p class="small text-truncate">jaemin.logs</p>
+            </div>
+
+            <!-- Story 11 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://2024-dailyview.s3.ap-northeast-1.amazonaws.com/Content/ueditor/net/upload1/2021-09/d2fc6feb-a48e-4ff6-8cd9-689a0cb43ff5.png"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 11"
+                />
+                </div>
+                <p class="small text-truncate">wonton.toast</p>
+            </div>
+            
+            <!-- Story 12 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://pica.zhimg.com/v2-49f5504541ee80a5c1f5e79198d6b0ce_1440w.jpg"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 12"
+                />
+                </div>
+                <p class="small text-truncate">june.tales</p>
+            </div>
+            
+            <!-- Story 13 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvbpLR37whlYSRohxqw2J-l4VhuWoAKrN48tRmymlb2V0_NUURhcdR95vYjSsLJ1R40ZY&usqp=CAU"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 13"
+                />
+                </div>
+                <p class="small text-truncate">egg_naaaahhh</p>
+            </div>
+            
+            <!-- Story 14 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHrUECx1wffsnqHEGE3jBiSQEEoEHi2TQGoawVsKFO-yMJgifhp-RM7Hl9VG7F72ePdmM&usqp=CAU"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 14"
+                />
+                </div>
+                <p class="small text-truncate">k_flicks101</p>
+            </div>
+            
+            <!-- Story 15 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://megapx-assets.dcard.tw/images/252f4e7a-6151-493c-bbee-7b304ce5919c/640.jpeg"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 15"
+                />
+                </div>
+                <p class="small text-truncate">daylight_hyo</p>
+            </div>
+            
+            <!-- Story 16 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2eOorKn2PwhC-QCXJPwsWMnxZJyv4kdxZKD77Bi3GMFHY8WHQqOqYCrDX9kNitowzliY&usqp=CAU"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 16"
+                />
+                </div>
+                <p class="small text-truncate">noodleandchai</p>
+            </div>
+            
+            <!-- Story 17 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://images2.gamme.com.tw/news2/2015/86/72/p56ZoZ2dmKSW.jpg"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 17"
+                />
+                </div>
+                <p class="small text-truncate">yunaa.diary</p>
+            </div>
+            
+            <!-- Story 18 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://cdn2.ettoday.net/images/2806/2806196.jpg"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 18"
+                />
+                </div>
+                <p class="small text-truncate">miso_onset</p>
+            </div>
+            
+            <!-- Story 19 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://cdn2.ettoday.net/images/2074/2074301.jpg"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 19"
+                />
+                </div>
+                <p class="small text-truncate">pixel_nico</p>
+            </div>
+            
+            <!-- Story 20 -->
+            <div class="d-inline-block text-center me-2" style="width: 80px;">
+                <div class="story-avatar-wrapper mx-auto mb-1 rounded-circle">
+                <img
+                    src="https://img.win3000.com/m00/4f/55/746759ba5e75847584272104bc2bce23.jpg"
+                    class="story-avatar rounded-circle"
+                    alt="Avatar 20"
+                />
+                </div>
+                <p class="small text-truncate">sunnywithfilm</p>
+            </div>
+        </div>
+
+    
+        <!-- 左右箭頭按鈕 (預設隱藏，可用 hover 或 JS 來顯示) -->
+        <button
+            class="stories-arrow stories-arrow-left"
+            id="arrowLeft"
+            aria-label="Previous Story"
+        >
+            <i class="bi bi-chevron-left"></i>
+        </button>
+        <button
+            class="stories-arrow stories-arrow-right"
+            id="arrowRight"
+            aria-label="Next Story"
+        >
+            <i class="bi bi-chevron-right"></i>
+        </button>
+        </div>
+        <!-- 限時動態區結束 -->
+    
+        <!-- ===== 貼文列表區 (Feed) ===== -->
+        <div style="width: 600px; max-width: 100%;" class="mb-4">
+        <!-- 單則貼文範例 -->
+        <div class="bg-white rounded mb-4">
+            <div class="d-flex align-items-center justify-content-between p-2">
+            <div class="d-flex align-items-center">
+                <img src="https://i.pinimg.com/222x/62/0d/86/620d869629d14e6aaed836df34bb94e5.jpg" alt="Post Author" class="rounded-circle me-2" width="40"
+                height="40" />
+                <div>
+                <span class="fw-bold d-block">sea_breeze_22</span>
+                <span class="text-muted small">2小時前</span>
+                </div>
+            </div>
+            <button class="btn btn-link text-secondary p-0" style="font-size: 1.25rem;" aria-label="More Options">
+                <i class="bi bi-three-dots"></i>
+            </button>
+            </div>
+            <div>
+            <img src="https://pic.pimg.tw/yappa/1382489363-2585312489.jpg" alt="Post Main" class="img-fluid w-100" width="600" height="400" />
+            </div>
+            <div class="px-3 py-2">
+                <!-- 按鈕列：喜歡、留言、分享、收藏 -->
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <!-- 左側：喜歡、留言、分享 -->
+                    <div class="d-flex align-items-center">
+                    <i class="bi bi-heart fs-5 me-3" role="button"></i>
+                    <i class="bi bi-chat fs-5 me-3" role="button"></i>
+                    <i class="bi bi-send fs-5" role="button"></i>
+                    </div>
+                    <!-- 右側：收藏 -->
+                    <i class="bi bi-bookmark fs-5" role="button"></i>
+                </div>
+            <p class="fw-bold mb-1" style="font-size: 0.95rem;">89個讚</p>
+            <p class="m-0" style="font-size: 0.95rem;">
+                <span class="fw-bold me-2">sea_breeze_22</span>
+                落日很短，但幸運地被我抓住了。拍完照片的那瞬間，海風把我頭髮整個打結，但好像也沒那麼煩了。
+            </p>
+            <p class="text-primary mt-1 mb-2" style="font-size: 0.9rem;">
+                #sunsetlover #海邊 #taiwanphotography #慢生活 #海風 #放空一下
+            </p>
+            <p class="fw-bold mb-1" style="font-size: 0.85rem; color: #000;">翻譯年糕</p>
+            <p class="text-muted mb-1" style="font-size: 0.85rem;">查看全部5則留言</p>
+            <p class="text-muted mb-0" style="font-size: 0.9rem;">留言⋯⋯</p>
+            </div>
+        </div>
+
+        <div class="bg-white rounded mb-4">
+            <div class="d-flex align-items-center justify-content-between p-2">
+              <div class="d-flex align-items-center">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHaEbTQH-_yKysomCbfllYq3cHWaR_5VQUWHj_r704OsfamhLUXcn9aSyKoMYXAmPMVRc&usqp=CAU" alt="Post Author" class="rounded-circle me-2"   width="40"
+                height="40" />
+                <div>
+                  <span class="fw-bold d-block">ink_sunday</span>
+                  <span class="text-muted small">9小時前</span>
+                </div>
+              </div>
+              <button class="btn btn-link text-secondary p-0" style="font-size: 1.25rem;" aria-label="More Options">
+                <i class="bi bi-three-dots"></i>
+              </button>
+            </div>
+            <div>
+              <img src="https://contentcenter-drcn.dbankcdn.cn/img/pub_1/Browser_contentImg_1154_8/ae/v3/105115458e47edfd25b787c35015453de13863a/3ecffd15ea8240bd9248dfa2e6538359_5_4/hd.webp" alt="Post Main" class="img-fluid w-100" width="600" height="400" />
+            </div>
+            <div class="px-3 py-2">
+                <!-- 按鈕列：喜歡、留言、分享、收藏 -->
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <!-- 左側：喜歡、留言、分享 -->
+                    <div class="d-flex align-items-center">
+                    <i class="bi bi-heart fs-5 me-3" role="button"></i>
+                    <i class="bi bi-chat fs-5 me-3" role="button"></i>
+                    <i class="bi bi-send fs-5" role="button"></i>
+                    </div>
+                    <!-- 右側：收藏 -->
+                    <i class="bi bi-bookmark fs-5" role="button"></i>
+                </div>
+              <p class="fw-bold mb-1" style="font-size: 0.95rem;">112個讚</p>
+              <p class="m-0" style="font-size: 0.95rem;">
+                <span class="fw-bold me-2">ink_sunday</span>
+                花了一整個下午畫完的幻想動物插畫，靈感來自上週做的夢。夢裡的山羊居然會飛。
+              </p>
+              <p class="text-primary mt-1 mb-2" style="font-size: 0.9rem;">
+                #illustration #fantasyart #procreateart #插畫作品 #奇幻風格
+              </p>
+              <p class="fw-bold mb-1" style="font-size: 0.85rem; color: #000;">翻譯年糕</p>
+              <p class="text-muted mb-1" style="font-size: 0.85rem;">查看全部12則留言</p>
+              <p class="text-muted mb-0" style="font-size: 0.9rem;">留言⋯⋯</p>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded mb-4">
+            <div class="d-flex align-items-center justify-content-between p-2">
+              <div class="d-flex align-items-center">
+                <img src="https://img.wxcha.com/m00/19/e4/cdd4bc858a4a097cdfb7b75d05dee3d4.jpg" alt="Post Author" class="rounded-circle me-2" width="40" height="40"/>
+                <div>
+                  <span class="fw-bold d-block">daily_bites_tw</span>
+                  <span class="text-muted small">1小時前</span>
+                </div>
+              </div>
+              <button class="btn btn-link text-secondary p-0" style="font-size: 1.25rem;" aria-label="More Options">
+                <i class="bi bi-three-dots"></i>
+              </button>
+            </div>
+            <div>
+              <img src="https://picsum.photos/id/1080/600/400" alt="Post Main" class="img-fluid w-100" />
+            </div>
+            <div class="px-3 py-2">
+                <!-- 按鈕列：喜歡、留言、分享、收藏 -->
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <!-- 左側：喜歡、留言、分享 -->
+                    <div class="d-flex align-items-center">
+                    <i class="bi bi-heart fs-5 me-3" role="button"></i>
+                    <i class="bi bi-chat fs-5 me-3" role="button"></i>
+                    <i class="bi bi-send fs-5" role="button"></i>
+                    </div>
+                    <!-- 右側：收藏 -->
+                    <i class="bi bi-bookmark fs-5" role="button"></i>
+                </div>
+              <p class="fw-bold mb-1" style="font-size: 0.95rem;">74個讚</p>
+              <p class="m-0" style="font-size: 0.95rem;">
+                <span class="fw-bold me-2">daily_bites_tw</span>
+                巷口新開的小甜點店，草莓生乳酪塔爆炸好吃🍓 甜而不膩，搭配冰美式剛剛好～
+              </p>
+              <p class="text-primary mt-1 mb-2" style="font-size: 0.9rem;">
+                #甜點控 #草莓塔 #美食日常 #TaipeiCafe #brunch
+              </p>
+              <p class="fw-bold mb-1" style="font-size: 0.85rem; color: #000;">翻譯年糕</p>
+              <p class="text-muted mb-1" style="font-size: 0.85rem;">查看全部3則留言</p>
+              <p class="text-muted mb-0" style="font-size: 0.9rem;">留言⋯⋯</p>
+            </div>
+        </div>
+          
+        <div class="bg-white rounded mb-4">
+            <div class="d-flex align-items-center justify-content-between p-2">
+              <div class="d-flex align-items-center">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSTDkhy5CnKFWR7Yfpdglu83TfHQr0vaQroA&s" alt="Post Author" class="rounded-circle me-2" width="40" height="40"/>
+                <div>
+                  <span class="fw-bold d-block">nomad_travels</span>
+                  <span class="text-muted small">5小時前</span>
+                </div>
+              </div>
+              <button class="btn btn-link text-secondary p-0" style="font-size: 1.25rem;" aria-label="More Options">
+                <i class="bi bi-three-dots"></i>
+              </button>
+            </div>
+            <div>
+              <img src="https://picsum.photos/id/1067/600/400" alt="Post Main" class="img-fluid w-100" />
+            </div>
+            <div class="px-3 py-2">
+                <!-- 按鈕列：喜歡、留言、分享、收藏 -->
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <!-- 左側：喜歡、留言、分享 -->
+                    <div class="d-flex align-items-center">
+                    <i class="bi bi-heart fs-5 me-3" role="button"></i>
+                    <i class="bi bi-chat fs-5 me-3" role="button"></i>
+                    <i class="bi bi-send fs-5" role="button"></i>
+                    </div>
+                    <!-- 右側：收藏 -->
+                    <i class="bi bi-bookmark fs-5" role="button"></i>
+                </div>
+              <p class="fw-bold mb-1" style="font-size: 0.95rem;">139個讚</p>
+              <p class="m-0" style="font-size: 0.95rem;">
+                <span class="fw-bold me-2">nomad_travels</span>
+                離開都市的喧囂，深入九份的小巷，這裡的每個轉角都像是故事的一部分。
+              </p>
+              <p class="text-primary mt-1 mb-2" style="font-size: 0.9rem;">
+                #九份 #老街散步 #旅遊日記 #台灣小旅行 #街景美學
+              </p>
+              <p class="fw-bold mb-1" style="font-size: 0.85rem; color: #000;">翻譯年糕</p>
+              <p class="text-muted mb-1" style="font-size: 0.85rem;">查看全部8則留言</p>
+              <p class="text-muted mb-0" style="font-size: 0.9rem;">留言⋯⋯</p>
+            </div>
+        </div>
+
+        <div class="bg-white rounded mb-4">
+            <div class="d-flex align-items-center justify-content-between p-2">
+              <div class="d-flex align-items-center">
+                <img src="https://picsum.photos/id/1012/40/40" alt="Post Author" class="rounded-circle me-2" />
+                <div>
+                  <span class="fw-bold d-block">greycoffeebean</span>
+                  <span class="text-muted small">3小時前</span>
+                </div>
+              </div>
+              <button class="btn btn-link text-secondary p-0" style="font-size: 1.25rem;" aria-label="More Options">
+                <i class="bi bi-three-dots"></i>
+              </button>
+            </div>
+            <div>
+              <img src="https://picsum.photos/id/1050/600/400" alt="Post Main" class="img-fluid w-100" />
+            </div>
+            <div class="px-3 py-2">
+                <!-- 按鈕列：喜歡、留言、分享、收藏 -->
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <!-- 左側：喜歡、留言、分享 -->
+                    <div class="d-flex align-items-center">
+                    <i class="bi bi-heart fs-5 me-3" role="button"></i>
+                    <i class="bi bi-chat fs-5 me-3" role="button"></i>
+                    <i class="bi bi-send fs-5" role="button"></i>
+                    </div>
+                    <!-- 右側：收藏 -->
+                    <i class="bi bi-bookmark fs-5" role="button"></i>
+                </div>
+              <p class="fw-bold mb-1" style="font-size: 0.95rem;">42個讚</p>
+              <p class="m-0" style="font-size: 0.95rem;">
+                <span class="fw-bold me-2">greycoffeebean</span>
+                雨天的咖啡香總是特別安心，在窗邊聽著滴滴答答，像是節奏慢下來的一種邀請。
+              </p>
+              <p class="text-primary mt-1 mb-2" style="font-size: 0.9rem;">
+                #雨天日常 #雨聲治癒 #咖啡時光 #慢生活 #台北雨天
+              </p>
+              <p class="fw-bold mb-1" style="font-size: 0.85rem; color: #000;">翻譯年糕</p>
+              <p class="text-muted mb-1" style="font-size: 0.85rem;">查看全部4則留言</p>
+              <p class="text-muted mb-0" style="font-size: 0.9rem;">留言⋯⋯</p>
+            </div>
+        </div>          
+        <!-- 貼文列表區結束 -->
+    
+    </main>
+  <!-- 中間主要內容結束 -->
+
+  <!-- ======================================
+       右側推薦列表 / 個人資訊
+  ====================================== -->
+  <aside class="ig-rightbar bg-white border-start p-3" style="width: 350px;">
+    <!-- 自己的檔案簡要 -->
+    <div class="d-flex align-items-center mb-3">
+      <!-- 自己頭像 -->
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcUgsJdrAGkBJMAja7IpLqSLOP0IgRdR8SLyOoVydADDwZsct-28BwBPYo0haWIgGSAzc&usqp=CAU"
+        alt="My Profile"
+        class="rounded-circle me-3"
+        style="width: 60px; height: 60px; object-fit: cover;"
+      />
+      <!-- 帳號 & 名稱 -->
+      <div class="flex-fill">
+        <p class="m-0 fw-bold">ilovepuppy_2025</p>
+        <p class="m-0 text-muted small">馮郁綾</p>
+      </div>
+      <!-- 切換帳號 -->
+      <a href="#" class="text-primary fw-bold small" style="text-decoration: none;">切換</a>
+    </div>
+
+    <!-- 為你推薦 -->
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <span class="text-muted fw-bold">為你推薦</span>
+      <a href="#" class="text-dark fw-bold" style="font-size: 0.9rem; text-decoration: none;">查看全部</a>
+    </div>
+    <!-- 單一推薦用戶 -->
+    <div class="d-flex align-items-center mb-2">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLbzAMtHQqmEJ2HRbeCXjKe5zsAWfmr9ojUw&s"
+        alt="Suggest 1"
+        class="rounded-circle me-2"
+        style="object-fit: cover;"
+        width="40"
+        height="40"
+      />
+      <div class="flex-fill">
+        <p class="m-0 small fw-bold">wow4ivan</p>
+        <p class="m-0 text-muted" style="font-size: 0.75rem;">ivy_0913 和另外 12 人在追蹤</p>
+      </div>
+      <a href="#" class="text-primary fw-bold small" style="text-decoration: none;">追蹤</a>
+    </div>
+    <!-- 其他推薦 -->
+    <div class="d-flex align-items-center mb-2">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjxETTAW_bVGt4HlMbAevN4mYBa83ghruSZg&s"
+        alt="Suggest 2"
+        class="rounded-circle me-2"
+        style="object-fit: cover;"
+        width="40"
+        height="40"
+      />
+      <div class="flex-fill">
+        <p class="m-0 small fw-bold">tttting_327</p>
+        <p class="m-0 text-muted" style="font-size: 0.75rem;">davidchiu_markus 和 7 人在追蹤</p>
+      </div>
+      <a href="#" class="text-primary fw-bold small" style="text-decoration: none;">追蹤</a>
+    </div>
+    <div class="d-flex align-items-center mb-2">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCgQ8LwRmbAswwH2lTieg3NVbWnW3HKlmAZB6ljBFBs-xu0HTWqQGMhMRa6J6dv3Y3V3w&usqp=CAU"
+        alt="Suggest 3"
+        class="rounded-circle me-2"
+        style="object-fit: cover;"
+        width="40"
+        height="40"
+      />
+      <div class="flex-fill">
+        <p class="m-0 small fw-bold">lifeismoney202207 <i class="bi bi-patch-check-fill text-primary"></i></p>
+        <p class="m-0 text-muted" style="font-size: 0.75rem;">jess_0429 和另外 19 人在追蹤</p>
+      </div>
+      <a href="#" class="text-primary fw-bold small" style="text-decoration: none;">追蹤</a>
+    </div>
+    <div class="d-flex align-items-center mb-2">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-7onoBjdtnmmH-ba9knkIs3UykoFPUG2ZQEsz7WVZ6mqCWgmxjeFD5fRQ25zgrcdbwjA&usqp=CAU"
+        alt="Suggest 4"
+        class="rounded-circle me-2"
+        style="object-fit: cover;"
+        width="40"
+        height="40"
+      />
+      <div class="flex-fill">
+        <p class="m-0 small fw-bold">yabi960170</p>
+        <p class="m-0 text-muted" style="font-size: 0.75rem;">ny_hsiao + 其他 10 人在追蹤</p>
+      </div>
+      <a href="#" class="text-primary fw-bold small" style="text-decoration: none;">追蹤</a>
+    </div>
+    <div class="d-flex align-items-center mb-3">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH_ruRXmsMDlYaimy5L-gcfbpPFCFgjmI8tw&s"
+        alt="Suggest 5"
+        class="rounded-circle me-2"
+        style="object-fit: cover;"
+        width="40"
+        height="40"
+      />
+      <div class="flex-fill">
+        <p class="m-0 small fw-bold">pigenn.1001</p>
+        <p class="m-0 text-muted" style="font-size: 0.75rem;">ooorzakk + 其他 11 人在追蹤</p>
+      </div>
+      <a href="#" class="text-primary fw-bold small" style="text-decoration: none;">追蹤</a>
+    </div>
+
+    <!-- 版權、連結資訊 -->
+    <div class="mt-auto" style="font-size: 0.7rem; color: #aaa;">
+      <p class="mb-1">
+        關於 • 使用說明 • 部落格 • API • 工作機會 • 資料政策
+      </p>
+      <p class="mb-0">© 2025 INSTAGRAM FROM META</p>
+    </div>
+  </aside>
+  <!-- 右側建議列表結束 -->
+
+
+</div>
+
+<!-- Bootstrap JS (含 Popper) -->
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+  crossorigin="anonymous"
+></script>
+
+<!-- 自訂 JS: 控制 stories 左右箭頭滑動 -->
+<script>
+    const storiesContainer = document.getElementById('storiesContainer');
+    const arrowLeft = document.getElementById('arrowLeft');
+    const arrowRight = document.getElementById('arrowRight');
+  
+    // 點擊左箭頭 -> 平滑向左滑動
+    arrowLeft.addEventListener('click', () => {
+      storiesContainer.scrollBy({
+        left: -600,
+        behavior: 'smooth'
+      });
+    });
+  
+    // 點擊右箭頭 -> 平滑向右滑動
+    arrowRight.addEventListener('click', () => {
+      storiesContainer.scrollBy({
+        left: 600,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+  
+</body>
+</html>
