@@ -100,9 +100,11 @@
         <a href="#" class="nav-link ig-navlink d-flex align-items-center">
           <!-- 個人頭像可替換成真實使用者圖像 -->
           <img
-            src="https://picsum.photos/id/1011/30/30"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcUgsJdrAGkBJMAja7IpLqSLOP0IgRdR8SLyOoVydADDwZsct-28BwBPYo0haWIgGSAzc&usqp=CAU"
             alt="Profile"
             class="rounded-circle me-3"
+            width="30"
+            height="30"
           />
           個人檔案
         </a>
@@ -137,11 +139,25 @@
   =========================== -->
     <main class="flex-fill d-flex flex-column align-items-center py-3 px-0">
 
+      <div class="mobile-header d-flex align-items-center px-3 py-2">
+        <div class="logo-group d-flex align-items-center">
+          <h1 class="logo m-0">Instagram</h1>
+          <i class="bi bi-caret-down-fill ms-2"></i> <!-- 小箭頭 -->
+
+          <div class="spacer"></div> <!-- 這是新加的空格 -->
+
+          <i class="bi bi-heart ms-3"></i> <!-- Heart icon -->
+          <i class="bi bi-messenger ms-3"></i>
+          <i class="bi bi-messenger ms-3"></i>
+        </div>
+      </div>
+      
+      
         <!-- ===== 限時動態區 (Stories) ===== -->
         <!-- 增加 position: relative 以及自訂 class "stories-wrapper" -->
         <div
         class="stories-wrapper bg-white rounded mb-3 px-2 py-2 position-relative"
-        style="width: 600px; max-width: 100%;"
+        style="width: 600px; max-width: 100%;margin-left: 0px;"
         >
             <!-- 這是可水平滾動的容器 -->
             <div
@@ -427,31 +443,31 @@
             </button>
             </div>
             <div>
-            <img src="https://pic.pimg.tw/yappa/1382489363-2585312489.jpg" alt="Post Main" class="img-fluid w-100" width="600" height="400" />
+            <img src="https://pic.pimg.tw/yappa/1382489363-2585312489.jpg" alt="Post Main" class="img-fluid w-100 post-img" />
             </div>
             <div class="px-3 py-2">
-                <!-- 按鈕列：喜歡、留言、分享、收藏 -->
-                <div class="d-flex align-items-center justify-content-between mb-2">
-                    <!-- 左側：喜歡、留言、分享 -->
-                    <div class="d-flex align-items-center">
-                    <i class="bi bi-heart fs-5 me-3" role="button"></i>
-                    <i class="bi bi-chat fs-5 me-3" role="button"></i>
-                    <i class="bi bi-send fs-5" role="button"></i>
-                    </div>
-                    <!-- 右側：收藏 -->
-                    <i class="bi bi-bookmark fs-5" role="button"></i>
+              <!-- 按鈕列：喜歡、留言、分享、收藏 -->
+              <div class="d-flex align-items-center justify-content-between mb-2 post-actions">
+                <!-- 左側：喜歡、留言、分享 -->
+                <div class="d-flex align-items-center">
+                <i class="bi bi-heart fs-5 me-3" role="button"></i>
+                <i class="bi bi-chat fs-5 me-3" role="button"></i>
+                <i class="bi bi-send fs-5" role="button"></i>
                 </div>
-            <p class="fw-bold mb-1" style="font-size: 0.95rem;">89個讚</p>
-            <p class="m-0" style="font-size: 0.95rem;">
-                <span class="fw-bold me-2">sea_breeze_22</span>
-                落日很短，但幸運地被我抓住了。拍完照片的那瞬間，海風把我頭髮整個打結，但好像也沒那麼煩了。
-            </p>
-            <p class="text-primary mt-1 mb-2" style="font-size: 0.9rem;">
-                #sunsetlover #海邊 #taiwanphotography #慢生活 #海風 #放空一下
-            </p>
-            <p class="fw-bold mb-1" style="font-size: 0.85rem; color: #000;">翻譯年糕</p>
-            <p class="text-muted mb-1" style="font-size: 0.85rem;">查看全部5則留言</p>
-            <p class="text-muted mb-0" style="font-size: 0.9rem;">留言⋯⋯</p>
+                <!-- 右側：收藏 -->
+                <i class="bi bi-bookmark fs-5" role="button"></i>
+              </div>
+              <p class="fw-bold mb-1" style="font-size: 0.95rem;">89個讚</p>
+              <p class="m-0" style="font-size: 0.95rem;">
+                  <span class="fw-bold me-2">sea_breeze_22</span>
+                  落日很短，但幸運地被我抓住了。拍完照片的那瞬間，海風把我頭髮整個打結，但好像也沒那麼煩了。
+              </p>
+              <p class="text-primary mt-1 mb-2" style="font-size: 0.9rem;">
+                  #sunsetlover #海邊 #taiwanphotography #慢生活 #海風 #放空一下
+              </p>
+              <p class="fw-bold mb-1" style="font-size: 0.85rem; color: #000;">翻譯年糕</p>
+              <p class="text-muted mb-1" style="font-size: 0.85rem;">查看全部5則留言</p>
+              <p class="text-muted mb-0" style="font-size: 0.9rem;">留言⋯⋯</p>
             </div>
         </div>
 
@@ -470,11 +486,11 @@
               </button>
             </div>
             <div>
-              <img src="https://contentcenter-drcn.dbankcdn.cn/img/pub_1/Browser_contentImg_1154_8/ae/v3/105115458e47edfd25b787c35015453de13863a/3ecffd15ea8240bd9248dfa2e6538359_5_4/hd.webp" alt="Post Main" class="img-fluid w-100" width="600" height="400" />
+              <img src="https://contentcenter-drcn.dbankcdn.cn/img/pub_1/Browser_contentImg_1154_8/ae/v3/105115458e47edfd25b787c35015453de13863a/3ecffd15ea8240bd9248dfa2e6538359_5_4/hd.webp" alt="Post Main" class="img-fluid w-100 post-img" />
             </div>
             <div class="px-3 py-2">
                 <!-- 按鈕列：喜歡、留言、分享、收藏 -->
-                <div class="d-flex align-items-center justify-content-between mb-2">
+                <div class="d-flex align-items-center justify-content-between mb-2 post-actions">
                     <!-- 左側：喜歡、留言、分享 -->
                     <div class="d-flex align-items-center">
                     <i class="bi bi-heart fs-5 me-3" role="button"></i>
@@ -512,11 +528,11 @@
               </button>
             </div>
             <div>
-              <img src="https://picsum.photos/id/1080/600/400" alt="Post Main" class="img-fluid w-100" />
+              <img src="https://picsum.photos/id/1080/600/400" alt="Post Main" class="img-fluid w-100 post-img" />
             </div>
             <div class="px-3 py-2">
                 <!-- 按鈕列：喜歡、留言、分享、收藏 -->
-                <div class="d-flex align-items-center justify-content-between mb-2">
+                <div class="d-flex align-items-center justify-content-between mb-2 post-actions">
                     <!-- 左側：喜歡、留言、分享 -->
                     <div class="d-flex align-items-center">
                     <i class="bi bi-heart fs-5 me-3" role="button"></i>
@@ -554,11 +570,11 @@
               </button>
             </div>
             <div>
-              <img src="https://picsum.photos/id/1067/600/400" alt="Post Main" class="img-fluid w-100" />
+              <img src="https://picsum.photos/id/1067/600/400" alt="Post Main" class="img-fluid w-100 post-img" />
             </div>
             <div class="px-3 py-2">
                 <!-- 按鈕列：喜歡、留言、分享、收藏 -->
-                <div class="d-flex align-items-center justify-content-between mb-2">
+                <div class="d-flex align-items-center justify-content-between mb-2 post-actions">
                     <!-- 左側：喜歡、留言、分享 -->
                     <div class="d-flex align-items-center">
                     <i class="bi bi-heart fs-5 me-3" role="button"></i>
@@ -596,11 +612,11 @@
               </button>
             </div>
             <div>
-              <img src="https://picsum.photos/id/1050/600/400" alt="Post Main" class="img-fluid w-100" />
+              <img src="https://picsum.photos/id/1050/600/400" alt="Post Main" class="img-fluid w-100 post-img" />
             </div>
             <div class="px-3 py-2">
                 <!-- 按鈕列：喜歡、留言、分享、收藏 -->
-                <div class="d-flex align-items-center justify-content-between mb-2">
+                <div class="d-flex align-items-center justify-content-between mb-2 post-actions">
                     <!-- 左側：喜歡、留言、分享 -->
                     <div class="d-flex align-items-center">
                     <i class="bi bi-heart fs-5 me-3" role="button"></i>
@@ -666,8 +682,8 @@
         height="40"
       />
       <div class="flex-fill">
-        <p class="m-0 small fw-bold">wow4ivan</p>
-        <p class="m-0 text-muted" style="font-size: 0.75rem;">ivy_0913 和另外 12 人在追蹤</p>
+        <p class="m-0 small fw-bold">lazy_hiker_log</p>
+        <p class="m-0 text-muted" style="font-size: 0.75rem;">minty_morning_sky 和另外 12 人在追蹤</p>
       </div>
       <a href="#" class="text-primary fw-bold small" style="text-decoration: none;">追蹤</a>
     </div>
@@ -682,8 +698,8 @@
         height="40"
       />
       <div class="flex-fill">
-        <p class="m-0 small fw-bold">tttting_327</p>
-        <p class="m-0 text-muted" style="font-size: 0.75rem;">davidchiu_markus 和 7 人在追蹤</p>
+        <p class="m-0 small fw-bold">tiny_world_diary</p>
+        <p class="m-0 text-muted" style="font-size: 0.75rem;">peachy_latte_days 和 7 人在追蹤</p>
       </div>
       <a href="#" class="text-primary fw-bold small" style="text-decoration: none;">追蹤</a>
     </div>
@@ -697,8 +713,8 @@
         height="40"
       />
       <div class="flex-fill">
-        <p class="m-0 small fw-bold">lifeismoney202207 <i class="bi bi-patch-check-fill text-primary"></i></p>
-        <p class="m-0 text-muted" style="font-size: 0.75rem;">jess_0429 和另外 19 人在追蹤</p>
+        <p class="m-0 small fw-bold">secret_moon_trip <i class="bi bi-patch-check-fill text-primary"></i></p>
+        <p class="m-0 text-muted" style="font-size: 0.75rem;">sunset_river_walk 和另外 19 人在追蹤</p>
       </div>
       <a href="#" class="text-primary fw-bold small" style="text-decoration: none;">追蹤</a>
     </div>
@@ -712,8 +728,8 @@
         height="40"
       />
       <div class="flex-fill">
-        <p class="m-0 small fw-bold">yabi960170</p>
-        <p class="m-0 text-muted" style="font-size: 0.75rem;">ny_hsiao + 其他 10 人在追蹤</p>
+        <p class="m-0 small fw-bold">cloudy_dream_night</p>
+        <p class="m-0 text-muted" style="font-size: 0.75rem;">wander_through_lens + 其他 10 人在追蹤</p>
       </div>
       <a href="#" class="text-primary fw-bold small" style="text-decoration: none;">追蹤</a>
     </div>
@@ -727,8 +743,8 @@
         height="40"
       />
       <div class="flex-fill">
-        <p class="m-0 small fw-bold">pigenn.1001</p>
-        <p class="m-0 text-muted" style="font-size: 0.75rem;">ooorzakk + 其他 11 人在追蹤</p>
+        <p class="m-0 small fw-bold">cozy_diary_0920</p>
+        <p class="m-0 text-muted" style="font-size: 0.75rem;">fluffy_puppy_snap + 其他 11 人在追蹤</p>
       </div>
       <a href="#" class="text-primary fw-bold small" style="text-decoration: none;">追蹤</a>
     </div>
@@ -745,6 +761,18 @@
 
 
 </div>
+
+<div class="mobile-bottom-nav">
+  <a href="#" class="nav-link"><i class="bi bi-house-door"></i></a>
+  <a href="#" class="nav-link"><i class="bi bi-search"></i></a>
+  <a href="#" class="nav-link"><i class="bi bi-plus-square"></i></a>
+  <a href="#" class="nav-link"><i class="bi bi-camera-reels"></i></a>
+  <a href="#" class="nav-link position-relative">
+    <i class="bi bi-person-circle"></i>
+    <span class="nav-dot"></span> <!-- 紅點通知 -->
+  </a>
+</div>
+
 
 <!-- Bootstrap JS (含 Popper) -->
 <script

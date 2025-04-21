@@ -184,3 +184,254 @@ main {
 a:hover {
   text-decoration: underline;
 }
+  
+/* =======================================================
+  10) Feed 微調：照片限寬、文字換行、按鈕比例
+  ======================================================= */
+
+/* --- 1) 貼文照片：永遠不會超過螢幕寬度 --- */
+.post-img,                      /* 幫所有貼文預留 class */
+.bg-white img.img-fluid {       /* 亦覆寫現有 w‑100 的 <img> */
+  max-width: 100% !important;   /* 關鍵：限制在父容器寬度內 */
+  height: auto !important;      /* 依比例縮放 */
+  display: block;               /* 移除底部 4px 空白 */
+}
+
+/* --- 2) 文字段落：長連結 / hashtag 也要自動斷行 --- */
+.post-caption,
+.post-caption * {
+  word-break: break-word;       /* 碰到長字串強制換行 */
+  overflow-wrap: anywhere;      /* 新版瀏覽器支援更好 */
+}
+
+/* --- 3) 按鈕列：icon 大小＆間距在不同裝置自適應 --- */
+.post-actions i {               /* 喜歡、留言、分享、收藏 */
+  font-size: 1.35rem;           /* 桌機預設 */
+  margin-right: 0.9rem;
+}
+
+
+@media (min-width: 768px) {
+  .mobile-header { display: none!important; }
+  .mobile-bottom-nav { display: none !important;  }
+}
+
+/* =======================================================
+   Mobile  (≤ 767 px)  ——  單一整合版
+   ======================================================= */
+
+@media (max-width: 767.98px) {
+
+  /* 1. 頁面整體禁止左右滾動，只允許上下滾動 */
+  html, body {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  .mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+    background: #fff;
+    padding: 0 16px;
+    border-bottom: none;
+    box-shadow: none;
+  }
+
+  .logo {
+    font-family: 'Cookie', cursive;
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  .logo-group {
+    display: flex;
+    align-items: center;
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+
+  .header-icons {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-icons i {
+    font-family: "bootstrap-icons";
+    font-size: 1.5rem;
+    margin-left: 120px;
+    cursor: pointer;
+  }
+
+  .spacer {
+    flex-grow: 1;
+    max-width: calc(90vw - 100px); /* 0.5螢幕寬度 - 元件固定寬度 */
+    min-width: 8px; /* 最小也留一點 */
+  }
+
+  .messenger-wrapper {
+    position: relative;
+    margin-left: 16px;
+  }
+
+
+  /* ---------- 2) 底部工具列（由左側 nav 變形） ---------- */
+  .ig-leftnav{
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; flex-direction: row; justify-content: space-between;
+    align-items: center; height: 60px;
+    width: 100%!important; padding: 0 env(safe-area-inset-left, 8px)
+                                      env(safe-area-inset-bottom, 0) 0;
+    border-top: 1px solid #dbdbdb!important;
+  }
+  .ig-leftnav h1          { display: none; }      /* 隱藏大 Logo */
+  .ig-leftnav .nav-link   {
+    flex: 1 1 20%; padding: 0; font-size: 0;      /* 5 等分、文字隱藏 */
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .ig-leftnav .nav-link i { font-size: 1.65rem; margin: 0!important; }
+  .ig-leftnav .nav:last-child{ display: none; }   /* 隱藏 Threads/更多 */
+
+  /* ---------- 3) 版面左右留 12 px 氣孔 ---------- */
+  .stories-wrapper,
+  main > div{
+    width: calc(100% - 0px)!important;
+    margin: 0 12px;
+    margin-bottom: 0px !important;
+  }
+
+  .text-truncate {
+    margin-bottom: 0px !important;
+  }
+
+  /* ---------- 4) 限時動態列 ---------- */
+  .story-avatar-wrapper{ width: 80px; height: 80px; padding: 3px; }
+  .story-avatar        { border-width: 3px; }
+  .stories-container p { font-size: 1rem; margin-top: 0rem; }
+
+  .stories-container {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory; /* optional */
+    padding: 0 12px;
+  }
+
+  /*限時動態容器允許水平滑動 */
+  .stories-wrapper {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 auto;
+    padding: 8px 0;
+    overflow: hidden; /* 保護外框不被溢出干擾 */
+  }
+
+  .story-item {
+    display: inline-block;
+    width: 80px;
+    vertical-align: top;
+    margin-right: 12px;
+  }
+
+  .story-item {
+    display: inline-block;
+    width: 80px; /* or 240px 手機放大版 */
+    vertical-align: top;
+  }
+  
+  /* 限時動態卡片：寬度 240px（覆寫 inline style） */
+  .stories-container .d-inline-block{
+    width: 100px !important;
+  }
+
+  .stories-arrow {
+    display: none !important;
+  }
+
+  /* ---------- 5) 頭像 / 按鈕 / 文字 ---------- */
+  /* (a) 作者頭像 */
+  .bg-white .d-flex img.rounded-circle.me-2{
+    width: 40px!important;
+    height: 40px!important;
+  }
+  /* (b) 互動 icon  */
+  .post-actions           { padding: 0 2px!important; }
+  .post-actions i         { font-size: 1.5rem!important; margin-right: 2rem!important; }
+  /* (c) 內文文字 */
+  .post-caption,
+  .post-caption *         { font-size: 1rem!important; line-height: 1.25!important; }
+
+  .post-actions {
+    width: 100vw !important;      /* 讓按鈕列滿版 */
+    max-width: 100vw !important;
+  }
+
+  .px-3 p,
+  .px-3 span {
+    font-size: 1rem !important;   /* 你可以自己調，比如 2rem、2.5rem */
+    line-height: 1.2 !important;
+    padding-left: 0px !important;
+  }
+  p, span {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 95vw;
+  }
+
+  /* ---------- 6) 其他 ---------- */
+  .ig-rightbar{ display: none; }          /* 隱藏右側推薦欄 */
+
+  /* 貼文作者名稱 + 時間文字放大 */
+  .bg-white .d-flex .fw-bold.d-block {
+    font-size: 1rem !important; /* 帳號名稱放大 */
+  }
+
+  .bg-white .d-flex .text-muted.small {
+    font-size: 1rem !important;   /* 時間文字放大 */
+  }
+
+  .post-img {
+    width: 100vw !important;          /* 螢幕寬度 */
+    max-width: 100vw !important;
+    height: auto !important;
+    display: block;
+  }
+
+  .mobile-bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 55px;
+    background: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+    z-index: 1000;
+  }
+
+  .mobile-bottom-nav .nav-link {
+    flex: 1 1 20%;
+    text-align: center;
+    font-size: 1.8rem;
+    color: #000;
+    position: relative;
+  }
+
+  .mobile-bottom-nav .nav-link i {
+    pointer-events: none; /* 點擊到的是 a，不是 i，保持好 UX */
+  }
+
+  /* 小紅點通知 */
+  .mobile-bottom-nav .nav-dot {
+    position: absolute;
+    bottom: 6px;
+    right: 22px;
+    width: 8px;
+    height: 8px;
+    background: #ed4956;
+    border-radius: 50%;
+  }
+}
